@@ -1,0 +1,35 @@
+<ion-view view-title="Sign In" hide-nav-bar="true">
+    <ion-content style="background: url(img/newmaterial.jpg) center; background-size: cover;">
+        <div class="im-wrapper">
+            <h4 class="border-top"><i class="icon ion-unlocked"></i> 登录</h4>
+            <form name="signInForm">
+                <div class="hero no-header flat">
+                    <div class="content">
+                        <div class="login-icon"></div>
+                        <h2>Hi Man</h2>
+                    </div>
+                </div>
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">用户名</span>
+                    <input type="text" placeholder="用户名" ng-model="login.username" required>
+                </label>
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">密码</span>
+                    <input type="password" placeholder="密码" ng-model="login.password" required>
+                </label>
+                </div>
+        </div>
+        <div class="padding">
+            <button ng-disabled="!signInForm.$valid" ng-click="login();" class="button button-full button-energized-900 ink">登录</button>
+        </div>
+        </form>
+        <br/><br/><br/><br/>
+    </ion-content>
+    <div class="tabs-striped tabs-background-assertive tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item active" href="#/login"><i class="icon ion-unlocked"></i> Login</a>
+            <a class="tab-item" href="#/signup"> <i class="icon ion-android-add"></i> Sing Up </a>
+        </div>
+    </div>
+</ion-view>

@@ -1,0 +1,50 @@
+.app-logo{ max-width:100px; margin:auto; background-repeat:no-repeat;background-position:center;}
+
+.cut-off-line{border-top:1px solid #c2c2c2;border-bottom:1px solid #c2c2c2; }
+.icon-post{color: #2c3e50;text-align: center;}
+.log-text {
+    padding: 10px;
+    padding-top: 60px; 
+    height: 300px; 
+    overflow-y:visible;
+    /*border: 1px solid #c2c2c2;*/
+    resize: none; 
+}
+
+.itme-card {
+    padding-top: 1px; 
+}
+
+.item-avatar-car {
+    padding-bottom: 1px;
+    line-height: 20px;
+}
+
+.home-bg {
+    background-color: #f2f2f5
+}
+
+.half-pic {
+  width: 100%;
+}
+
+
+.scale-in {
+  transform: scale(0.9);
+  opacity: 0;
+}
+.scale-in.ng-enter,
+.scale-in > .ng-enter {
+  transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
+}
+
+.scale-in.ng-enter-active,
+.scale-in > .ng-enter-active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.scale-in.ng-leave,
+.scale-in > .ng-leave {
+  transition: all ease-in-out 250ms;
+}

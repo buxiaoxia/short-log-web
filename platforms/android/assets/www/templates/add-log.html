@@ -1,0 +1,21 @@
+<ion-modal-view ng-controller="AddLogCtrl">
+    <ion-content>
+        <ion-nav-bar class="bar-assertive">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear" ng-click="this.modal.hide()">取消</button>
+            </ion-nav-buttons>
+            <ion-nav-title class="title">log</ion-nav-title>
+            <ion-nav-buttons side="right">
+                <button class="button button-clear" ng-click="publish();">发布</button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <textarea class="log-text" ng-model="log.content" textareaAuto=true placeholder=" 说一说" style="width:100%"></textarea>
+
+        <div class="button-bar cut-off-line" style="position:relative;">
+            <a class="button button-raised"><i class="ion-android-add icon-post"></i></a>
+            <a class="button button-raised"><i class="ion-android-add icon-post"></i></a>
+            <a class="button button-raised"><i class="ion-android-add icon-post"></i></a>
+            <a class="button button-raised"><i class="ion-android-send icon-post"></i></a>
+        </div>
+    </ion-content>
+</ion-modal-view>

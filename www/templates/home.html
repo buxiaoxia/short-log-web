@@ -1,0 +1,36 @@
+<ion-view view-title="主页" class="home-bg">
+    <ion-content>
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <div class="list card light-bg" ng-repeat="shortLog in shortLogs.list  | orderBy:'-create_at'">
+            <div class="item item-avatar">
+                <img ng-src="{{shortLog.author.avatar||'/img/man.jpg'}}">
+                <h2>{{shortLog.author.username}}</h2>
+                <p>{{shortLog.difftime}}</p>
+            </div>
+            <div class="item item-body itme-card">
+                <img ng-show="shortLog.pic" class="full-image" ng-src="{{shortLog.pic||'img/man.jpg'}}">
+                <p>{{shortLog.content}}</p>
+                <p>
+                    <a class="subdued">{{shortLog.like_count}} 赞</a>
+                    <a class="subdued">{{shortLog.reply_count}} 评论</a>
+                </p>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    <i class="icon ion-thumbsup"></i> 赞
+                </a>
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    <i class="icon ion-chatbox"></i> 评论
+                </a>
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    <i class="icon ion-share"></i> 分享
+                </a>
+            </div>
+        </div>
+        <ion-infinite-scroll ng-if="shortLogs.moredata" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+        <!-- ion-infinite-scroll 上拉加载数据指令 distance默认1% nf-if的值为false时，就禁止执行on-infinite  -->
+    </ion-content>
+    <button class="button button-energized-900 button-fab button-fab-bottom-right" ng-click="openModal()" style="bottom:45px;">
+        <i class="icon ion-android-add"></i>
+    </button>
+</ion-view>

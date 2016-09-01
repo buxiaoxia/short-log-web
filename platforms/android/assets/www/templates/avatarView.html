@@ -1,0 +1,20 @@
+<ion-modal-view ng-controller="AvatarViewCtrl">
+    <ion-content>
+        <!--<ion-nav-bar class="bar-assertive">
+            <ion-nav-buttons side="left">
+                <button class="button button-clear" ng-click="this.modal.hide()">取消</button>
+            </ion-nav-buttons>
+            <ion-nav-title class="title">log</ion-nav-title>
+        </ion-nav-bar>-->
+        <img ng-src="{{loginData.avatar||'img/man.jpg'}}" class="half-pic" ng-click="this.modal.hide()">
+        <div style="padding:10px">
+            <button class="button button-block button-stable" ng-click="selectPic()">
+                更改头像
+        </button>
+            <button class="button button-block button-stable" ng-click="this.modal.hide()">
+                取消
+        </button>
+        </div>
+
+    </ion-content>
+</ion-modal-view>

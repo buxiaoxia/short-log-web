@@ -1,0 +1,45 @@
+<ion-view view-title="Sign In" class="loginBg" hide-nav-bar="true">
+    <ion-content style="background: url(img/newmaterial.jpg) center; background-size: cover;">
+        <div class="im-wrapper">
+            <h4 class="border-top"><i class="icon ion-edit"></i> 注册</h4>
+            <form name="signUpForm">
+                <div class="hero no-header flat">
+                    <div class="content">
+                        <!--<div class="login-icon"></div>-->
+                        <h2>Hi {{register.username}} </h2>
+                    </div>
+                </div>
+                <div class="list">
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">用户名</span>
+                    <input type="text" placeholder="用户名"  ng-model="register.username" required>
+                </label>
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" placeholder="Email"  ng-model="register.email" required>
+                </label>
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">密码</span>
+                    <input type="password" placeholder="密码" ng-model="register.password" required>
+                </label>
+                    <label class="item item-input item-floating-label">
+                    <span class="input-label">密码验证</span>
+                    <input type="password" placeholder="密码验证" ng-model="register.re_password" required>
+                </label>
+                    <br />
+                    <br />
+                    <div class="loginButton">
+                        <button ng-disabled="!signUpForm.$valid"  class="button button-block button-energized-900 ion-android-add" ng-click="register();">  注册 </button>
+                    </div>
+                </div>
+            </form>
+        </div><br/><br/><br/><br/>
+        </div>
+    </ion-content>
+    <div class="tabs-striped  tabs-background-assertive tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item" href="#/signin"><i class="icon ion-unlocked"></i> Login</a>
+            <a class="tab-item active" href="#/signup"> <i class="icon ion-android-add"></i> Sing Up </a>
+        </div>
+    </div>
+</ion-view>
