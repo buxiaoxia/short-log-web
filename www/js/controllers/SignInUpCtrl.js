@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts"/>
 angular.module('SignInUpModule', [])
 
-    .controller('SignInCtrl', ['$scope', '$http', '$location','$window', 'LoadingProgressService', 'PopupService','CurrentUser', function ($scope, $http, $location, $window,LoadingProgressService, PopupService,CurrentUser) {
+    .controller('SignInCtrl', ['$scope', '$http', '$location','$window', 'LoadingProgressService', 'PopupService','CurrentUser','services', function ($scope, $http, $location, $window,LoadingProgressService, PopupService,CurrentUser,services) {
 
         $scope.login = function () {
             LoadingProgressService.show();
@@ -10,9 +10,10 @@ angular.module('SignInUpModule', [])
                 password: $scope.login.password
             }
 
-            $http.post('/signin', data).success(function (res,x,s,d) {
+            $http.post(services.sigin, data).success(function (res,x,s,d) {
                 LoadingProgressService.hide();
                 $window.localStorage.setItem('user',JSON.stringify(res.user));
+                $window.sessionStorage.setItem('user_id',res.user._id);
                 CurrentUser.login(res.user);
                 $location.path('/app/home');
             }).error(function (error) {
@@ -34,7 +35,7 @@ angular.module('SignInUpModule', [])
                 password: $scope.register.password,
                 re_password: $scope.register.re_password
             }
-            $http.post('/signup', data).success(function (res) {
+            $http.post(services.sigup, data).success(function (res) {
                 LoadingProgressService.hide();
                 PopupService.alertPopup('提示', res.message);
                 $scope.register = {};

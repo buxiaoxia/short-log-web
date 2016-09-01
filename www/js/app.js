@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ngCookies','ShortLogsServiceModule', 'ngResource', 'ionic', 'ionic-material', 'ionMdInput','HomeModule', 'SignInUpModule', 'shortLog.services','ToastModule','CurrentUserModule','directiveModule','AddLogModule']);
+var app = angular.module('starter', ['ngCookies','ShortLogsServiceModule', 'ngResource', 'ionic', 'ionic-material', 'ionMdInput','HomeModule', 'SignInUpModule', 'shortLog.services','ToastModule','CurrentUserModule','directiveModule','AddLogModule','configure']);
 
 app.run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -111,18 +111,21 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('app/home');
-
-    $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
+    //允许跨域请求
+    $httpProvider.defaults.useXDomain = true;
+    //删除用于识别ajax调用的XMLHttpRequests头，防止拦截CORS
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    
+    $httpProvider.interceptors.push(['$q', '$location','$window', function ($q, $location,$window) {
         console.log('auth.................');
-        //$window.sessionStorage.token = token;
         return {
-            // 'request': function (config) {
-            //     config.headers = config.headers || {};
-            //     if ($window.sessionStorage.token) {
-            //         config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
-            //     }
-            //     return config;
-            // },
+            'request': function (config) {
+                config.headers = config.headers || {};
+                if ($window.sessionStorage.user_id) {
+                    config.headers.AuthUser = $window.sessionStorage.user_id;
+                }
+                return config;
+            },
             'responseError': function (response) {
                 console.log('responseError');
                 console.log(response);
