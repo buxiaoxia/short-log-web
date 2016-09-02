@@ -28,12 +28,11 @@ angular.module('HomeModule', ['ngCookies'])
 
         $scope.loadMore = function () {
             // 获取最早一条 
-            // $scope.shortLogs.list.sort(function (a, b) {
-            //     // return a.create_at - b.create_at;
-            //     return Date.parse(b.create_at.replace(/-/gi, "/")) - 
-            //     Date.parse(a.create_at.replace(/-/gi, "/"));
-            // });
             var tmp = $scope.shortLogs.list[$scope.shortLogs.list.length-1];
-            $scope.shortLogs = shortLogService.loadMore($scope, tmp.create_at);
+            var time = null;
+            if(tmp){
+                time = tmp.create_at;
+            }
+            $scope.shortLogs = shortLogService.loadMore($scope, time);
         }
     }])
