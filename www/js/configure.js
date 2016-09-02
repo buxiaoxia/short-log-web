@@ -42,6 +42,9 @@ short_log_service = {
     short_log :'http://127.0.0.1:9001/api/v1.0/shortLogs/:id',
     sigin : 'http://127.0.0.1:9001/api/v1.0/signin',
     sigup : 'http://127.0.0.1:9001/api/v1.0/signup',
+    // short_log :'http://114.3.55.224:9001/api/v1.0/shortLogs/:id',
+    // sigin : 'http://114.3.55.224:9001/api/v1.0/signin',
+    // sigup : 'http://114.3.55.224:9001/api/v1.0/signup',
 }
 
 
