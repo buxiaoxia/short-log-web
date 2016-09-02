@@ -4,14 +4,18 @@
 
 
     if (!CurrentUser.user) {
+        //从本地存储获取用户信息。
         CurrentUser.login(JSON.parse($window.localStorage.getItem("user")));
     }
     if (CurrentUser.user) {
+        //用户信息存在 填充用户信息数据
         $scope.loginData.username = CurrentUser.user.username;
         $scope.loginData.avatar = CurrentUser.user.avatar;
+        $window.sessionStorage.setItem('user_id',CurrentUser.user._id);
     } else CurrentUser.setScope($scope);
 
 
+    //头像修改模板
     $ionicModal.fromTemplateUrl('templates/avatarView.html', {
         scope: $scope,
         animation: 'animated zoomIn'
